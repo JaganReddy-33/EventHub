@@ -32,13 +32,16 @@ A full-stack web application for creating, viewing, and managing events with RSV
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](assets/screenshots/dashboard.png)
+![Dashboard](./client/src/assets/Dashboard.png)
 
-### Create Event
-![Create Event](assets/screenshots/create-event.png)
+### Event
+![Event page](./client/src/assets/Events.png)
 
-### RSVP Page
-![RSVP Page](assets/screenshots/rsvp.png)
+### create event form
+![form Page](./client/src/assets/Form.png)
+
+### Login page
+![Login page](./client/src/assets/Login.png)
 
 ---
 
