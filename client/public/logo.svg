@@ -1,0 +1,40 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Vibrant gradient background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <!-- Subtle spotlight in the center -->
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.65)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+    </radialGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect x="5" y="5" width="54" height="54" rx="18" fill="url(#bg)" />
+  <rect x="5" y="5" width="54" height="54" rx="18" fill="url(#glow)" style="mix-blend-mode: screen;" />
+
+  <!-- Stylized "EH" monogram -->
+  <g transform="translate(14,18)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- "E" -->
+    <path
+      d="M4 4 L4 24
+         M4 4 H14
+         M4 14 H12
+         M4 24 H14"
+      stroke-width="2.6"
+    />
+
+    <!-- "H" -->
+    <path
+      d="M20 4 L20 24
+         M30 4 L30 24
+         M20 14 H30"
+      stroke-width="2.6"
+    />
+  </g>
+</svg>
