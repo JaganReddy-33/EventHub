@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -15,50 +16,49 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-
 const uploadsPath = path.join(process.cwd(), 'server', 'uploads');
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
+];
 
-const allowedOrigins = [process.env.CLIENT_URL || 'http://localhost:5173'];
+// ✅ SAFE CORS CONFIG
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow server-to-server & tools like curl/postman
+    if (!origin) return callback(null, true);
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      // ❗ NEVER throw error
+      callback(null, false);
+    }
+  },
+  credentials: true,
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
+}));
 
-  // Preflight request
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-  next();
-});
-
+// ✅ Always allow OPTIONS
+app.options('*', cors());
 
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
-
 app.use(morgan('dev'));
 
-
 app.use('/uploads', express.static(uploadsPath));
-
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 
-
 app.use(notFound);
 app.use(errorHandler);
-
 
 const PORT = process.env.PORT || 5000;
 
