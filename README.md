@@ -2,6 +2,10 @@
 
 A full-stack web application for creating, viewing, and managing events with RSVP functionality. Built with MongoDB, Express.js, React.js, and Node.js.
 
+[🚀 Live Demo](https://eventhub-sooty-nine.vercel.app)
+
+---
+
 ## 🚀 Features
 
 ### Core Features
@@ -22,6 +26,21 @@ A full-stack web application for creating, viewing, and managing events with RSV
 - 📊 **User Dashboard**: Personal dashboard showing created events and events you're attending
 - 🌙 **Dark Mode**: Toggle between light and dark themes
 - 🎨 **Modern UI/UX**: Beautiful animations, smooth transitions, and polished interface
+
+---
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](assets/screenshots/dashboard.png)
+
+### Create Event
+![Create Event](assets/screenshots/create-event.png)
+
+### RSVP Page
+![RSVP Page](assets/screenshots/rsvp.png)
+
+---
 
 ## 📋 Prerequisites
 
